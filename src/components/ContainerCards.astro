@@ -33,7 +33,7 @@ const arrayCards = [
   {
     title: 'Landing 20 Svgs With Gravit Designer',
     repo: 'https://github.com/20essentials/20-svgs-with-gravit-designer',
-    localImage: '/assets/project-1342.avif',
+    localImage: '/assets/20-svgs-with-gravit-designer.avif',
     id: '006'
   },
   {
@@ -42,15 +42,23 @@ const arrayCards = [
     localImage: '/assets/project-1344.avif',
     id: '007'
   },
+  {
+    title: 'Signup Form + Login Form + Strapi Errors',
+    web: 'https://github.com/20essentials/some-projects-with-strapi-cms/blob/main/frontend/src/components/signup-form.tsx',
+    localImage: '/assets/projects/login-form.avif.avif',
+    id: '008'
+  },
+  {
+    title: 'Search with Suspense Boundary',
+    repo: 'https://github.com/20essentials/project-1347',
+    localImage: '/assets/project-1347.avif',
+    id: '009'
+  }
 ];
 ---
 
-<section class="am-container-cards">
-  {
-    arrayCards.map(({ id, localImage, repo, title }) => (
-      <aside class='card' />
-    ))
-  }
+<section class='am-container-cards'>
+  {arrayCards.map(({ id, localImage, repo, title }) => <aside class='card' />)}
 </section>
 
 <style>
