@@ -43,7 +43,7 @@ export const arrayCards = [
   },
   {
     title: 'Signup Form + Login Form + Strapi Errors',
-    web: 'https://github.com/20essentials/some-projects-with-strapi-cms/blob/main/frontend/src/components/signup-form.tsx',
+    repo: 'https://github.com/20essentials/some-projects-with-strapi-cms/blob/main/frontend/src/components/signup-form.tsx',
     localImage: '/assets/login-form.avif',
     id: '008'
   },

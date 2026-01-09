@@ -12,17 +12,30 @@ const newArrayCards = Array.from(
   <div class='move'>
     {
       newArrayCards.map(({ id, localImage, repo, title }) => (
-        <figure>
-          <img src={baseUrl(localImage)} />
+        <figure class='am-figure' title={title} data-anchor={repo}>
+          <img draggable="false" src={baseUrl(localImage)} />
         </figure>
       ))
     }
   </div>
 </section>
 
+<script>
+  document.addEventListener('click', event => {
+    const target = event.target as HTMLElement;
+    const figure = target.closest<HTMLElement>('.am-figure');
+    if (figure.matches('.am-figure')) {
+      const anchor = figure.getAttribute('data-anchor');
+      if (anchor) {
+        window.open(anchor, '_blank');
+      }
+    }
+  });
+</script>
+
 <style>
   .wrap {
-    --d: clamp(5em, 16vw, 15em);
+    --d: 15vmax;
     place-self: center;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
@@ -33,19 +46,19 @@ const newArrayCards = Array.from(
     scrollbar-color: var(--primary-color) transparent;
     height: 40%;
     position: relative;
-    z-index: 5;
+    z-index: 10;
 
     &::before,
     &::after {
       display: inline-block;
       width: calc(50% - 0.5 * var(--d));
-      height: 1px;
+      height: 0.07vmax;
       content: '';
     }
 
     &:focus {
       outline: none;
-      box-shadow: 0 0 2px var(--primary-color);
+      box-shadow: 0 0 0.13vmax var(--primary-color);
     }
   }
 
@@ -59,12 +72,13 @@ const newArrayCards = Array.from(
     scroll-snap-align: center;
     margin: 0;
     transform-style: preserve-3d;
+    cursor: pointer;
   }
 
   img {
     width: var(--d);
     aspect-ratio: 1;
-    -webkit-box-reflect: below 0.5em linear-gradient(#0000, #0004);
+    -webkit-box-reflect: below 0.52vmax linear-gradient(#0000, #0004);
     animation:
       ry 1s cubic-bezier(0.32, 0, 0.68, 0) both,
       tz 1s ease-in both;
@@ -96,47 +110,5 @@ const newArrayCards = Array.from(
     100% {
       translate: 50% 0;
     }
-  }
-
-  /* just support info */
-  aside {
-    position: fixed;
-    bottom: 0;
-    padding: 1em;
-  }
-
-  .box-info-scrollani {
-    margin: 1em;
-    border-left: solid 5px #dc3055;
-    padding: 1em;
-    box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.35);
-    background: #851d40;
-    color: #fff;
-    font:
-      1.25em/1.25 ubuntu,
-      trebuchet ms,
-      arial,
-      sans-serif;
-
-    @supports (animation-timeline: view()) {
-      display: none;
-    }
-  }
-
-  kbd {
-    padding: 2px;
-    background: hsla(0, 0%, 0%, 0.35);
-    font:
-      1.1em/1.2 ubuntu mono,
-      consolas,
-      monaco,
-      monospace;
-  }
-
-  a {
-    color: gold;
-  }
-  a:is(:focus, :hover) {
-    color: lightskyblue;
   }
 </style>
