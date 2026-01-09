@@ -8,9 +8,9 @@ export default defineConfig({
   },
 
   //Localhost
-  // site: 'http://localhost:4321/'
+  site: 'http://localhost:4321/'
 
   //Deploy normal project
-  base: '/20-projects-with-nextjs/',
-  site: 'https://20essentials.github.io/20-projects-with-nextjs/'
+  // base: '/20-projects-with-nextjs/',
+  // site: 'https://20essentials.github.io/20-projects-with-nextjs/'
 });
