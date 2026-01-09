@@ -1,53 +1,6 @@
-<div id='page'>
-  <h1>Unexpected Moiré</h1>
-  <p>This moiré interactive background is made with simple WebGL points.</p>
-  <p>
-    <strong>Move</strong> your mouse ! You can <strong>click</strong> to randomize colors,
-    and <strong>scroll</strong> the page to zoom in this funny effect.
-  </p>
+<div id='page'></div>
 
-  <h2>About</h2>
-  <p>
-    Why <em>unexpected</em> ? Because I didn't want to make this moiré effect, but I
-    think it is funny and strangely beautiful.
-  </p>
-  <p>
-    These WebGL points are animated using a water simulation technique taken from
-    this <a href='https://github.com/evanw/webgl-water' target='_blank'
-      >great demo</a
-    >
-    from <a href='http://madebyevan.com/' target='_blank'>Evan Wallace</a>.
-  </p>
-  <p>
-    Instead using ThreeJS, I thought it was easier to use the tiny <a
-      href='https://github.com/oframe/ogl'
-      target='_blank'>oframe/ogl</a
-    > lib.
-  </p>
-
-  <p>
-    Take a look at my <a
-      href='https://codepen.io/collection/AGZywR'
-      target='_blank'>WebGL</a
-    > collection or <a href='https://codepen.io/soju22' target='_blank'
-      >Codepen profile</a
-    > for other experiments.
-  </p>
-</div>
-
-<p class='collection'>
-  <a href='https://codepen.io/collection/AGZywR' target='_blank'
-    >WebGL Collection</a
-  >
-</p>
-
-<style>
-  body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    text-shadow: 1px 1px 1px #fff;
-  }
-
+<style is:global>
   canvas {
     position: fixed;
     top: 0;
@@ -56,82 +9,26 @@
   }
 
   #page {
-    width: 70%;
-    max-width: 600px;
-    min-height: 4000px;
-    margin: 8% auto 0;
-    text-align: center;
-  }
-
-  h1,
-  h2,
-  p {
-    margin: 2em 0;
-  }
-  h1 {
-    font-size: 5em;
-  }
-  h2 {
-    font-size: 3em;
-  }
-  p {
-    font-size: 2em;
-  }
-
-  a {
-    color: #4040ff;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-
-  .collection {
-    width: auto;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    margin: 15px;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
-  }
-
-  .collection a {
-    display: inline-block;
-    background: #fff;
-    opacity: 0.4;
-    transition: opacity 0.7s;
-    margin-left: 5px;
-    padding: 5px;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: #000;
-  }
-
-  .collection a:hover {
-    text-decoration: none;
-    opacity: 0.9;
-  }
-
-  @media screen and (max-width: 800px) {
-    h1 {
-      font-size: 4em;
-    }
-    h2 {
-      font-size: 2em;
-    }
-    p {
-      font-size: 1.5em;
-    }
+    width: 100%;
+    min-height: 100vh;
   }
 </style>
 
 <script>
-  function App() {
-    const { Renderer, Camera, Geometry, Program, Mesh, Color, Vec2 } = ogl;
+  import {
+    Renderer,
+    Camera,
+    Geometry,
+    Program,
+    Color,
+    Vec2,
+    RenderTarget,
+    Triangle,
+    Mesh
+  } from 'ogl';
+  import chroma from 'chroma-js';
 
+  function App() {
     let renderer, gl, camera;
     let width, height, wWidth, wHeight;
     let mouse,
@@ -368,12 +265,7 @@
     }
   }
 
-  /**
-   * Ripple effect
-   */
   const RippleEffect = (function () {
-    const { Vec2, Program } = ogl;
-
     function RippleEffect(renderer) {
       this.renderer = renderer;
       this.gl = renderer.gl;
@@ -382,7 +274,8 @@
       this.delta = new Vec2(1 / this.width, 1 / this.height);
       this.gpgpu = new GPGPU(this.renderer.gl, {
         width: this.width,
-        height: this.height
+        height: this.height,
+        type: undefined
       });
 
       this.initShaders();
@@ -480,8 +373,6 @@
    * GPGPU Helper
    */
   const GPGPU = (function () {
-    const { RenderTarget, Triangle, Mesh } = ogl;
-
     function GPGPU(gl, { width, height, type }) {
       this.gl = gl;
       this.width = width;
