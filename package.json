@@ -10,7 +10,9 @@
     "deploy": "pnpm gh-pages -d dist/"
   },
   "dependencies": {
-    "astro": "5.13.5"
+    "astro": "5.13.5",
+    "chroma-js": "2.0.3",
+    "ogl": "0.0.39"
   },
   "devDependencies": {
     "gh-pages": "6.3.0"
