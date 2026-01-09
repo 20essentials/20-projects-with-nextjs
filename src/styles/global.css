@@ -1,5 +1,6 @@
 :root {
-  --gradient: linear-gradient(to bottom, rgb(137, 86, 239), transparent);
+  --primary-color: #8956ef;
+  --gradient: linear-gradient(to bottom, var(--primary-color), transparent);
 }
 
 /* @font-face {

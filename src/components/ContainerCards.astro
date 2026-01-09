@@ -8,9 +8,6 @@ const newArrayCards = Array.from(
 );
 ---
 
-<!-- <section class='am-container-cards'>
-
-</section> -->
 <section class='wrap'>
   <div class='move'>
     {
@@ -24,12 +21,122 @@ const newArrayCards = Array.from(
 </section>
 
 <style>
-  .am-container-cards {
-    min-height: 100vh;
-    display: grid;
-    padding: 2.2vmax;
-    gap: 2.2vmax;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(17vmax, 1fr));
+  .wrap {
+    --d: clamp(5em, 16vw, 15em);
+    place-self: center;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    padding: var(--d) 0;
+    max-width: calc(6 * var(--d));
+    perspective: calc(3 * var(--d));
+    white-space: nowrap;
+    scrollbar-color: var(--primary-color) transparent;
+    height: 40%;
+    position: relative;
+    z-index: 5;
+
+    &::before,
+    &::after {
+      display: inline-block;
+      width: calc(50% - 0.5 * var(--d));
+      height: 1px;
+      content: '';
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 2px var(--primary-color);
+    }
+  }
+
+  .move {
+    display: inline-block;
+    transform-style: preserve-3d;
+  }
+
+  figure {
+    display: inline-block;
+    scroll-snap-align: center;
+    margin: 0;
+    transform-style: preserve-3d;
+  }
+
+  img {
+    width: var(--d);
+    aspect-ratio: 1;
+    -webkit-box-reflect: below 0.5em linear-gradient(#0000, #0004);
+    animation:
+      ry 1s cubic-bezier(0.32, 0, 0.68, 0) both,
+      tz 1s ease-in both;
+    animation-timeline: view(inline);
+    object-fit: cover;
+  }
+
+  @keyframes ry {
+    0% {
+      rotate: y -90deg;
+    }
+    50% {
+      rotate: y 0deg;
+      animation-timing-function: cubic-bezier(0.32, 1, 0.68, 1);
+    }
+    100% {
+      rotate: y 90deg;
+    }
+  }
+
+  @keyframes tz {
+    0% {
+      translate: -50% 0;
+    }
+    50% {
+      translate: 0 0 calc(1.5 * var(--d));
+      animation-timing-function: ease-out;
+    }
+    100% {
+      translate: 50% 0;
+    }
+  }
+
+  /* just support info */
+  aside {
+    position: fixed;
+    bottom: 0;
+    padding: 1em;
+  }
+
+  .box-info-scrollani {
+    margin: 1em;
+    border-left: solid 5px #dc3055;
+    padding: 1em;
+    box-shadow: 2px 2px 5px hsla(0, 0%, 0%, 0.35);
+    background: #851d40;
+    color: #fff;
+    font:
+      1.25em/1.25 ubuntu,
+      trebuchet ms,
+      arial,
+      sans-serif;
+
+    @supports (animation-timeline: view()) {
+      display: none;
+    }
+  }
+
+  kbd {
+    padding: 2px;
+    background: hsla(0, 0%, 0%, 0.35);
+    font:
+      1.1em/1.2 ubuntu mono,
+      consolas,
+      monaco,
+      monospace;
+  }
+
+  a {
+    color: gold;
+  }
+  a:is(:focus, :hover) {
+    color: lightskyblue;
   }
 </style>
