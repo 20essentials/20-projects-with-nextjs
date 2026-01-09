@@ -1,15 +1,11 @@
 ---
 import { NUM_OF_PROJECTS } from '@/utils/data';
 import { baseUrl } from '@/utils/functions';
-const logo = baseUrl('/assets/css-logo.svg');
+const logo = baseUrl('/assets/next-js.svg');
 ---
 
 <section class='am-hero'>
-  <!-- <h1>
-    {`${NUM_OF_PROJECTS} Projects With NextJs`}
-    <img src={logo} alt='Logo' />
-  </h1> -->
-
+  <img src={logo} alt='Logo' class='logo' />
 </section>
 
 <section class='am-titulo'></section>
@@ -20,6 +16,14 @@ const logo = baseUrl('/assets/css-logo.svg');
     position: relative;
     z-index: 2;
     width: 100%;
+  }
+
+  .logo {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    width: 6.4vmax;
+    transform: translate(-50%, -50%);
   }
 
   .am-titulo {
