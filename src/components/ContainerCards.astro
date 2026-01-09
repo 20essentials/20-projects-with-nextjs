@@ -1,9 +1,26 @@
 ---
-import { arrayCards } from '@/utils/data';
+import { arrayCards, NUM_OF_PROJECTS } from '@/utils/data';
+import { baseUrl } from '@/utils/functions';
+const TOTAL_IMAGES_ACHIEVE = 40;
+const newArrayCards = Array.from(
+  { length: TOTAL_IMAGES_ACHIEVE },
+  (_, i) => arrayCards[i % NUM_OF_PROJECTS]
+);
 ---
 
-<section class='am-container-cards'>
-  {arrayCards.map(({ id, localImage, repo, title }) => <aside class='card' />)}
+<!-- <section class='am-container-cards'>
+
+</section> -->
+<section class='wrap'>
+  <div class='move'>
+    {
+      newArrayCards.map(({ id, localImage, repo, title }) => (
+        <figure>
+          <img src={baseUrl(localImage)} />
+        </figure>
+      ))
+    }
+  </div>
 </section>
 
 <style>
