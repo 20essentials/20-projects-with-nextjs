@@ -54,6 +54,7 @@ body {
   height: max-content;
   width: 100%;
   flex-direction: column;
+  position: relative;
 }
 
 /***************************SCROLL***************************/

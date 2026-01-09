@@ -5,32 +5,35 @@ const logo = baseUrl('/assets/css-logo.svg');
 ---
 
 <section class='am-hero'>
-  <h1>
+  <!-- <h1>
     {`${NUM_OF_PROJECTS} Projects With NextJs`}
     <img src={logo} alt='Logo' />
-  </h1>
+  </h1> -->
+
 </section>
+
+<section class='am-titulo'></section>
+
 <style>
   .am-hero {
     height: 100vh;
     position: relative;
+    z-index: 2;
+    width: 100%;
   }
 
-  h1 {
+  .am-titulo {
     position: absolute;
-    top: 50%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 5vmax;
-    text-align: center;
-    text-wrap: balance;
-    color: transparent;
-    background-image: var(--gradient);
-    background-clip: text;
-
-    img {
-      width: 4vmax;
-      transform: translateY(0.3vmax);
-    }
+    width: 48vmax;
+    height: 10vmax;
+    background-image: url('/assets/titulo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    mix-blend-mode: darken;
+    z-index: 5;
   }
 </style>
