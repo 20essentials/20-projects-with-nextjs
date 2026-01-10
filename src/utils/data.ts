@@ -92,7 +92,7 @@ export const arrayCards = [
   {
     title: 'Conditional rendering using cookies() and searchParams()',
     repo: 'https://github.com/20essentials/project-1352/blob/main/src/proxy.ts',
-    localImage: '/assets/project-1351.avif',
+    localImage: '/assets/project-1352.avif',
     id: '016'
   },
 ];
