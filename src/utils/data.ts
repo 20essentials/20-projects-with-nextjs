@@ -89,6 +89,12 @@ export const arrayCards = [
     localImage: '/assets/project-1351.avif',
     id: '015'
   },
+  {
+    title: 'Conditional rendering using cookies() and searchParams()',
+    repo: 'https://github.com/20essentials/project-1352/blob/main/src/proxy.ts',
+    localImage: '/assets/project-1351.avif',
+    id: '016'
+  },
 ];
 
 export const NUM_OF_PROJECTS = arrayCards.length;
