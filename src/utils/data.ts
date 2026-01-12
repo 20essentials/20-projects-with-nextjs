@@ -95,6 +95,12 @@ export const arrayCards = [
     localImage: '/assets/project-1352.avif',
     id: '016'
   },
+  {
+    title: 'Spreedshet + Next js',
+    repo: 'https://github.com/20essentials/project-1355',
+    localImage: '/assets/project-1355.avif',
+    id: '017'
+  },
 ];
 
 export const NUM_OF_PROJECTS = arrayCards.length;
