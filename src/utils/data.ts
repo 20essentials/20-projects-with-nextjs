@@ -107,6 +107,12 @@ export const arrayCards = [
     localImage: '/assets/chat-ia-minimalist.avif',
     id: '018'
   },
+  {
+    title: 'Some Experiments With Nano Banana And Veo3',
+    repo: 'https://github.com/20essentials/some-experiments-with-nano-banana-and-veo3',
+    localImage: '/assets/some-experiments-with-nano-banana-and-veo3.avif',
+    id: '019'
+  },
 ];
 
 export const NUM_OF_PROJECTS = arrayCards.length;
