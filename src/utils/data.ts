@@ -101,6 +101,12 @@ export const arrayCards = [
     localImage: '/assets/project-1355.avif',
     id: '017'
   },
+  {
+    title: 'ChatIA Minimalist',
+    repo: 'https://github.com/20essentials/some-projects-with-ia/blob/main/src/app/1/api/chat/route.ts',
+    localImage: '/assets/chat-ia-minimalist.avif',
+    id: '018'
+  },
 ];
 
 export const NUM_OF_PROJECTS = arrayCards.length;
