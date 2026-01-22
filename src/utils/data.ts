@@ -113,6 +113,12 @@ export const arrayCards = [
     localImage: '/assets/some-experiments-with-nano-banana-and-veo3.avif',
     id: '019'
   },
+  {
+    title: 'Tracing, Instrumentation, and OpenTelemetry Simple Example',
+    repo: 'https://github.com/20essentials/project-1356',
+    localImage: '/assets/project-1356.avif',
+    id: '020'
+  },
 ];
 
 export const NUM_OF_PROJECTS = arrayCards.length;
