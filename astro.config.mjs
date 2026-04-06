@@ -6,11 +6,8 @@ export default defineConfig({
   build: {
     assets: 'static'
   },
-
-  //Localhost
-  // site: 'http://localhost:4321/'
-
-  //Deploy normal project
-  base: '/20-projects-with-nextjs/',
-  site: 'https://20essentials.github.io/20-projects-with-nextjs/'
+  base: import.meta.env.DEV ? undefined : '/20-projects-with-nextjs/',
+  site: import.meta.env.DEV
+    ? 'http://localhost:4321/'
+    : 'https://20essentials.github.io/20-projects-with-nextjs/'
 });

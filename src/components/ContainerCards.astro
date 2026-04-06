@@ -8,7 +8,8 @@ const newArrayCards = Array.from(
 );
 ---
 
-<section class='wrap'>
+<main class="am-the-main">
+  <section class='wrap'>
   <div class='move'>
     {
       newArrayCards.map(({ id, localImage, repo, title }) => (
@@ -19,12 +20,13 @@ const newArrayCards = Array.from(
     }
   </div>
 </section>
+</main>
 
 <script>
   document.addEventListener('click', event => {
     const target = event.target as HTMLElement;
     const figure = target.closest<HTMLElement>('.am-figure');
-    if (figure.matches('.am-figure')) {
+    if (figure?.matches('.am-figure')) {
       const anchor = figure.getAttribute('data-anchor');
       if (anchor) {
         window.open(anchor, '_blank');
@@ -34,17 +36,25 @@ const newArrayCards = Array.from(
 </script>
 
 <style>
+  .am-the-main {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap
+    place-content: center;
+  }
+
   .wrap {
     --d: 15vmax;
     place-self: center;
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     padding: var(--d) 0;
-    max-width: calc(6 * var(--d));
     perspective: calc(3 * var(--d));
     white-space: nowrap;
     scrollbar-color: var(--primary-color) transparent;
-    height: 40%;
+    width: 100%;
     position: relative;
     z-index: 10;
 
